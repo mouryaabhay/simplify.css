@@ -1,0 +1,242 @@
+/*
+ * ==========================================================================
+ * simplify.css | v1.0.0
+ * Purpose: Minimal browser-default override (compatible, 1rem = 10px)
+ * Philosophy: Predictable base, zero opinionation, total framework safety.
+ * ==========================================================================
+*/
+
+/*
+ * ==========================================================================
+ * 1. Base scaling & box model
+ * --------------------------------------------------------------------------
+ * GOAL: Create a consistent and predictable unit system and layout model.
+
+ * - The default browser font-size is 16px. Setting `html { font-size: 62.5%; }`
+ *   converts 1rem to 10px, which makes spacing, typography, and sizing math
+ *   extremely easy (e.g., 1.6rem = 16px, 2.4rem = 24px).
+
+ * - Using `border-box` ensures padding and border are included in total width
+ *   and height calculations — eliminating the classic box-model inconsistency
+ *   that used to break responsive layouts.
+
+ * - `-webkit-text-size-adjust: 100%` prevents Safari and iOS browsers from
+ *   automatically zooming or resizing text when device orientation changes.
+ * ==========================================================================
+*/
+
+html {
+  font-size: 62.5%;               /* 1rem = 10px for dev-friendly math           */
+  line-height: 1.15;              /* Normalize inconsistent line-height defaults */
+  -webkit-text-size-adjust: 100%; /* Prevent iOS text zooming                    */
+  box-sizing: border-box;         /* Make width calculations predictable         */
+  scroll-behavior: smooth;        /* Consistent smooth scroll experience         */
+
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;            /* Inherit from root for universal consistency */
+  margin: 0;                      /* Remove unpredictable user agent spacing     */
+  padding: 0;                     /* Avoid inherited padding edge cases          */
+}
+
+/*
+ * ==========================================================================
+ * 2. Body
+ * --------------------------------------------------------------------------
+ * GOAL: Create a neutral foundation for all text and layout contexts.
+
+ * - Remove default body margin (varies by browser, typically 8px).
+ * - Set a comfortable line-height that works across devices and fonts.
+ * - Enable font-smoothing for macOS and optimize legibility for Windows.
+ * ==========================================================================
+*/
+
+body {
+  margin: 0;                           /* Remove browser default 8px margin     */
+  line-height: 1.5;                    /* Consistent rhythm for text and layout */
+  -webkit-font-smoothing: antialiased; /* Better rendering on macOS             */
+  text-rendering: optimizeLegibility;  /* Improved kerning and glyphs           */
+}
+
+/*
+ * ==========================================================================
+ * 3. Typography
+ * --------------------------------------------------------------------------
+ * GOAL: Prevent double spacing and text overflow issues while keeping text
+ * semantically meaningful and accessible.
+
+ * - All heading and paragraph tags have default margins — which differ between
+ *   browsers and can double-space content unexpectedly.
+ * - `overflow-wrap: break-word` prevents text from overflowing containers,
+ *   especially useful for URLs, logs, or code samples.
+ * - `small { font-size: 80%; }` preserves typographic hierarchy while
+ *   maintaining readability and scaling.
+ * ==========================================================================
+*/
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;                 /* Remove inconsistent UA spacing                    */
+  overflow-wrap: break-word; /* Prevent overflow of long text lines               */
+}
+
+small {
+  font-size: 80%;            /* Maintain relative size hierarchy for smaller text */
+}
+
+/*
+ * ==========================================================================
+ * 4. Links & interactive elements
+ * --------------------------------------------------------------------------
+ * GOAL: Neutralize inconsistent link colors and interaction behaviors.
+ *
+ * - Default link colors (blue/purple) and underlines can clash with
+ *   design systems that define their own color tokens.
+ * - Removing them ensures frameworks (Tailwind, Chakra, MUI, etc.) control visuals.
+ * - Prevent accidental text selection on tappable elements for smoother UX.
+ * - `-webkit-tap-highlight-color: transparent` removes gray tap outlines on mobile.
+ * - Resetting form elements provides visual consistency across browsers
+ *   (especially Safari and Firefox quirks).
+ * - `appearance: none` grants full control over native controls
+ *   (e.g., removing default dropdown arrows in WebKit).
+ * ==========================================================================
+*/
+
+a {
+  color: inherit;                            /* Inherit color from parent context               */
+  text-decoration: none;                     /* Remove UA underlines                            */
+  -webkit-tap-highlight-color: transparent;  /* Remove tap highlight flash on mobile            */
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;                             /* Match app typography                            */
+  color: inherit;                            /* Use parent color for theme adaptability         */
+  background: none;                          /* Reset to transparent baseline                   */
+  border: none;                              /* Remove inconsistent UA borders                  */
+  line-height: 1.15;                         /* Consistent vertical rhythm across platforms     */
+  appearance: none;                          /* Strip native browser styling                    */
+}
+
+button {
+  cursor: pointer;                           /* Expected pointer affordance                     */
+}
+
+button:disabled {
+  cursor: default;                           /* Keeps disabled buttons non-interactive visually */
+}
+
+a,
+button {
+  -webkit-user-select: none;                 /* Prevent accidental text selection on tap        */
+  user-select: none;
+}
+
+/*
+ * ==========================================================================
+ * 5. Accessibility: Focus handling
+ * --------------------------------------------------------------------------
+ * GOAL: Keep focus outlines visible for keyboard users while removing them
+ * for mouse and touch interactions.
+
+ * - `:focus-visible` (supported in all modern browsers) only triggers for
+ *   keyboard navigation, improving accessibility without clutter.
+ * - The outline uses `currentColor` to inherit text color for better contrast
+ *   in both light and dark contexts.
+ * - Rounded corners prevent harsh outlines on non-rectangular elements.
+ * ==========================================================================
+*/
+
+:focus-visible {
+  outline: 0.2rem solid currentColor; /* Visible keyboard focus                       */
+  outline-offset: 0.2rem;             /* Separate outline from element edge           */
+  border-radius: 0.2rem;              /* Soften corners for better UX                 */
+}
+
+:focus:not(:focus-visible) {
+  outline: none;                      /* Remove duplicate outlines for click/tap users */
+}
+
+/*
+ * ==========================================================================
+ * 6. Media elements
+ * --------------------------------------------------------------------------
+ * GOAL: Make media responsive and visually consistent.
+
+ * - By default, <img> and <video> are inline elements with bottom whitespace.
+ * - Setting them to `display: block` removes that gap.
+ * - `max-width: 100%` ensures media scales within its container.
+ * - `height: auto` preserves aspect ratio.
+ * ==========================================================================
+*/
+
+img, svg, video, canvas, picture {
+  display: block;  /* Remove baseline whitespace      */
+  max-width: 100%; /* Responsive scaling              */
+  height: auto;    /* Maintain intrinsic aspect ratio */
+}
+
+/*
+ * ==========================================================================
+ * 7. Lists & tables
+ * --------------------------------------------------------------------------
+ * GOAL: Remove default spacing and ensure clean table rendering.
+
+ * - Default list bullets and padding differ between browsers.
+ * - Many modern UI kits (like Tailwind or MUI) define their own list styles.
+ * - `border-collapse: collapse` ensures cell borders don’t double up.
+ * ==========================================================================
+*/
+
+ol, ul {
+  list-style: none;         /* Remove bullets/numbers for clean UI framework base */
+}
+
+table {
+  border-collapse: collapse; /* Prevent double borders in table cells             */
+}
+
+/*
+ * ==========================================================================
+ * 8. Mount points
+ * --------------------------------------------------------------------------
+ * GOAL: Define safe stacking and isolation for SPA/SSR environments.
+
+ * - React, Next.js, Vue, and Svelte mount their apps to a single root node.
+ * - `isolation: isolate` creates a new stacking context, preventing elements
+ *   like modals or z-indexed components from leaking outside.
+ * ==========================================================================
+*/
+
+#root, #__next {
+  isolation: isolate; /* Safer z-index layering in SPA contexts */
+}
+
+/*
+ * ==========================================================================
+ * 9. Utility safety
+ * --------------------------------------------------------------------------
+ * GOAL: Hide elements that are intentionally invisible.
+
+ * - `template` should never display (used for cloning nodes in JS).
+ * - `[hidden]` attribute should reliably hide elements across browsers.
+ * ==========================================================================
+*/
+
+template, [hidden] {
+  display: none !important; /* Consistent invisibility across browsers */
+}
+
+/*
+ * ==========================================================================
+ * Simplify.css — Final Notes
+ * --------------------------------------------------------------------------
+ * - Framework-agnostic
+ * - Accessibility-safe
+ * - Predictable scaling (1rem = 10px)
+ * - No design opinion (colors, spacing, typography are untouched)
+ * - Plays perfectly with Tailwind, Bootstrap, and modern UI kits
+ * ==========================================================================
+*/
