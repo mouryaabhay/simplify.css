@@ -1,5 +1,5 @@
 # 🧩 simplify.css
-**Version:** 1.0.0<br>
+**Version:** 1.1.0<br>
 **Purpose:** A fully self-contained, framework-agnostic baseline that brings harmony to inconsistent browser defaults — without adding opinions, dependencies, or noise.
 
 ---
@@ -33,11 +33,3 @@
 > **Simplify.css** isn’t here to restyle the web — it’s here to **steady it**.
 > It aligns browsers, respects accessibility, and gives developers a clean, predictable canvas to build on.
 > No design rules. No assumptions. Just clarity and consistency.
-
----
-
-## 📦 Installation & Usage
-
-```bash
-# (optional — npm publishing planned)
-npm install simplify.css

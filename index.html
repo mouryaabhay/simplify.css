@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simplify.css — Minimal, Predictable, Framework-Safe Reset</title>
+
+    <!-- Core Styles -->
+    <link rel="stylesheet" href="simplify.css" />
+
+    <style>
+      :root {
+        --bg: #fafafa;
+        --fg: #0b0d17;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --card-bg: #ffffff;
+        --accent: #2563eb;
+        --accent-hover: #1e4fd6;
+        --accent-fg: #ffffff;
+        --radius: 0.8rem;
+        --shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      header {
+        text-align: center;
+        padding: 8rem 1.5rem 5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      header h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+      }
+
+      header p {
+        color: var(--muted);
+        font-size: 1.9rem;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .buttons {
+        margin-top: 3.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        background: var(--accent);
+        color: var(--accent-fg);
+        padding: 1.1rem 2.2rem;
+        border-radius: var(--radius);
+        font-weight: 600;
+        font-size: 1.6rem;
+        box-shadow: var(--shadow);
+        transition: all 0.2s ease;
+      }
+
+      .btn:hover {
+        background: var(--accent-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1.5px solid var(--border);
+        color: var(--fg);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      section {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 5rem 1.5rem 6rem;
+      }
+
+      section h2 {
+        text-align: center;
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .card h3 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .card p {
+        color: var(--muted);
+        font-size: 1.6rem;
+      }
+
+      blockquote {
+        font-style: italic;
+        background: var(--card-bg);
+        border-left: 4px solid var(--accent);
+        padding: 2rem;
+        border-radius: var(--radius);
+        margin-top: 3rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 5rem 1rem 3rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+        font-size: 1.5rem;
+      }
+
+      footer a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>🧩 Simplify.css</h1>
+      <p>
+        A fully self-contained, framework-agnostic baseline that brings harmony
+        to inconsistent browser defaults — without adding opinions, dependencies, or noise.
+      </p>
+
+      <div class="buttons">
+        <a href="https://github.com/mouryaabhay/simplify.css" class="btn btn-secondary" target="_blank">
+          View on GitHub
+        </a>
+        <a
+          href="https://raw.githubusercontent.com/mouryaabhay/simplify.css/main/simplify.css"
+          class="btn btn-secondary"
+          download
+        >
+          Download
+        </a>
+        <a
+          href="https://twitter.com/intent/tweet?text=Simplify.css%20—%20A%20minimal%2C%20predictable%2C%20framework-safe%20CSS%20reset.%20Built%20for%20modern%20web%20apps.%20%23CSS%20%23webdev&url=https%3A%2F%2Fgithub.com%2Fmouryaabhay%2Fsimplify.css"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-secondary"
+        >
+          Share on X
+        </a>
+      </div>
+    </header>
+
+    <section>
+      <h2>🚀 Why Simplify.css?</h2>
+      <div class="feature-grid">
+        <div class="card">
+          <h3>🧮 1rem = 10px</h3>
+          <p>Makes layout, spacing, and typography math effortless.</p>
+        </div>
+        <div class="card">
+          <h3>🧱 Predictable Layout Model</h3>
+          <p>Universal <code>box-sizing: border-box</code> keeps layouts stable.</p>
+        </div>
+        <div class="card">
+          <h3>⚖️ Framework-Safe</h3>
+          <p>Integrates cleanly with any frontend stack or UI system.</p>
+        </div>
+        <div class="card">
+          <h3>♿ Accessible by Default</h3>
+          <p>Retains focus visibility and native text scaling.</p>
+        </div>
+        <div class="card">
+          <h3>💡 Zero Visual Opinion</h3>
+          <p>Leaves color, font, and spacing choices entirely to you.</p>
+        </div>
+        <div class="card">
+          <h3>🧩 Mount Isolation</h3>
+          <p>Prevents stacking leaks across React, Vue, and Svelte roots.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>⚙️ Core Principles</h2>
+      <div class="feature-grid">
+        <div class="card">
+          <h3>🧠 Stable Foundation</h3>
+          <p>Predictable rendering across all browsers and devices.</p>
+        </div>
+        <div class="card">
+          <h3>📏 Intuitive Scaling</h3>
+          <p>1rem = 10px makes layout math simple and consistent.</p>
+        </div>
+        <div class="card">
+          <h3>📦 Universal Box Model</h3>
+          <p>Eliminates width/height surprises and keeps layouts stable.</p>
+        </div>
+        <div class="card">
+          <h3>🤝 Accessible Interactions</h3>
+          <p>Preserves natural focus visibility and scaling behavior.</p>
+        </div>
+        <div class="card">
+          <h3>⚙️ Framework Harmony</h3>
+          <p>Works cleanly with Tailwind, Chakra, React, Vue, and Svelte.</p>
+        </div>
+        <div class="card">
+          <h3>🪶 Lightweight Footprint</h3>
+          <p>No dependencies, no overrides — just a clean base layer.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🧠 Philosophy</h2>
+      <blockquote>
+        <p><strong>Simplify.css</strong> isn't here to restyle the web — it's here to <strong>steady it</strong>.</p>
+        <p>
+          It aligns browsers, respects accessibility, and gives developers a clean, predictable canvas to build on.<br />
+          No design rules. No assumptions. Just clarity and consistency.
+        </p>
+      </blockquote>
+    </section>
+
+    <footer>
+      <p>
+        Made with ❤️ by
+        <a href="https://github.com/mouryaabhay/" target="_blank">Abhay Mourya</a> ·
+        <a href="https://github.com/mouryaabhay/simplify.css/" target="_blank">GitHub</a>
+      </p>
+    </footer>
+  </body>
+</html>
